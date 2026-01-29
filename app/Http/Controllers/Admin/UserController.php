@@ -72,4 +72,14 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Something went wrong.');
         }
     }
+
+    public function activeUsers()
+    {
+        $title = 'Active Users';
+        $keyword = request('search');
+        $users = User::with('bank_account')->when($keyword, function($q) use($keyword){
+            $q->where(DB::raw('CONCAT(first_name, " ", last_name)'), 'like', "%".$keyword."%");
+        })->whereIn('status', ['blocked', 'active'])->where('type', 'user')->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.users.active', compact('users', 'title'));
+    }
 }

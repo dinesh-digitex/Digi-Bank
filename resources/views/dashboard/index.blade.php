@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="col-md-3">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="{{ route('user.pending') }}" class="text-decoration-none text-dark">
                     <div class="card shadow-sm h-100 dashboard-card">
                         <div class="card-body">
                             <h6 class="text-muted">Pending Users</h6>
@@ -52,7 +52,7 @@
             </div>
         @else
             <div class="col-md-3">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="{{ route('transactions') }}" class="text-decoration-none text-dark">
                     <div class="card shadow-sm h-100 dashboard-card">
                         <div class="card-body">
                             <h6 class="text-muted">Balance</h6>

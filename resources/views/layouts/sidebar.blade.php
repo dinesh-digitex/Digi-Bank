@@ -18,8 +18,20 @@
                         <span class="align-middle">Pending Users ({{ pending_users_count() }})</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ request()->is('active-users') ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('user.active') }}">
+                        <i class="align-middle" data-feather="users"></i>
+                        <span class="align-middle">Users</span>
+                    </a>
+                </li>
             @endif
             @if (auth()->check())
+                <li class="sidebar-item {{ request()->is('user/transactions') ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('transactions') }}">
+                        <i class="align-middle" data-feather="dollar-sign"></i>
+                        <span class="align-middle">Transactions</span>
+                    </a>
+                </li>
             @endif
         </ul>
     </div>

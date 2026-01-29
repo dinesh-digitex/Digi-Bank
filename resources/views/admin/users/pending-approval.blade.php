@@ -11,7 +11,7 @@
 
             <div class="card-body table-responsive">
                 <table class="table table-striped table-hover table-bordered">
-                    <thead>
+                    <thead class="table-light">
                         <tr>
                             <th>Name</th>
                             <th>Email</th>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BankFeatureController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\CheckAdminLoggedInMiddleware;
@@ -31,10 +32,17 @@ Route::middleware(['web', CheckLoggedInMiddleware::class])->group(function () {
             Route::get('/pending-users', 'pendingUsers')->name('pending');
             Route::get('/activate-user/{id}', 'activateUser')->name('activate');
             Route::get('/delete-user/{id}', 'deleteUser')->name('delete');
+            Route::get('/active-users', 'activeUsers')->name('active');
+            Route::get('/update-status/{id}', 'updateStatus')->name('update.status');
         });
     });
     //User Routes
     Route::middleware(CheckUserLoggedInMiddleware::class)->group(function(){
-
+        Route::controller(BankFeatureController::class)->group(function(){
+            Route::get('user/transactions', 'transactions')->name('transactions');
+            Route::post('user/withdrawl', 'withdrawlAmount')->name('user.withdrawl');
+            Route::post('user/deposit', 'depositAmount')->name('user.deposit');
+            Route::post('user/transfer', 'transferAmount')->name('user.transfer');
+        });
     });
 });

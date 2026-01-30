@@ -88,7 +88,13 @@
                     cancelButtonText: 'No',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        console.log('Confirmed:', url);
+                        $.get(url, function(res) {
+                            if (res.success == 0) {
+                                checkbox.prop('checked', !checkbox.prop('checked'));
+                            }
+                        }).fail(function() {
+                            checkbox.prop('checked', !checkbox.prop('checked'));
+                        });
                     } else {
                         checkbox.prop('checked', !checkbox.prop('checked'));
                     }

@@ -24,6 +24,12 @@
                         <span class="align-middle">Users</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ request()->is('transactions') ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.transactions') }}">
+                        <i class="align-middle" data-feather="dollar-sign"></i>
+                        <span class="align-middle">All Transactions</span>
+                    </a>
+                </li>
             @endif
             @if (auth()->check())
                 <li class="sidebar-item {{ request()->is('user/transactions') ? 'active' : '' }}">

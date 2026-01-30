@@ -18,7 +18,7 @@
     <div class="row g-3">
         @if (auth('admin')->check())
             <div class="col-md-3">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="{{route('user.active')}}" class="text-decoration-none text-dark">
                     <div class="card shadow-sm h-100 dashboard-card">
                         <div class="card-body">
                             <h6 class="text-muted">Users</h6>
@@ -40,7 +40,7 @@
                 </a>
             </div>
             <div class="col-md-3">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="{{route('admin.transactions')}}" class="text-decoration-none text-dark">
                     <div class="card shadow-sm h-100 dashboard-card">
                         <div class="card-body">
                             <h6 class="text-muted">Total Today's Transaction</h6>

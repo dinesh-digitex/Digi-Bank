@@ -27,18 +27,19 @@ Route::middleware(['web', CheckLoggedInMiddleware::class])->group(function () {
     Route::post('/change-password', [ProfileController::class, 'doChangePassword']);
 
     //Admin Routes
-    Route::middleware(CheckAdminLoggedInMiddleware::class)->group(function(){
-        Route::controller(UserController::class)->as('user.')->group(function(){
+    Route::middleware(CheckAdminLoggedInMiddleware::class)->group(function () {
+        Route::controller(UserController::class)->as('user.')->group(function () {
             Route::get('/pending-users', 'pendingUsers')->name('pending');
             Route::get('/activate-user/{id}', 'activateUser')->name('activate');
             Route::get('/delete-user/{id}', 'deleteUser')->name('delete');
             Route::get('/active-users', 'activeUsers')->name('active');
             Route::get('/update-status/{id}', 'updateStatus')->name('update.status');
         });
+        Route::get('/transactions', [UserController::class, 'showAllTransactions'])->name('admin.transactions');
     });
     //User Routes
-    Route::middleware(CheckUserLoggedInMiddleware::class)->group(function(){
-        Route::controller(BankFeatureController::class)->group(function(){
+    Route::middleware(CheckUserLoggedInMiddleware::class)->group(function () {
+        Route::controller(BankFeatureController::class)->group(function () {
             Route::get('user/transactions', 'transactions')->name('transactions');
             Route::post('user/withdrawl', 'withdrawlAmount')->name('user.withdrawl');
             Route::post('user/deposit', 'depositAmount')->name('user.deposit');

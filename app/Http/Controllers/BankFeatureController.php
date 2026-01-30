@@ -155,7 +155,7 @@ class BankFeatureController extends Controller
             }
             $reciever = User::find($request->to_user_id);
             if ($reciever->status != 'active') {
-                return response()->json(['success' => 0, 'msg' => "Reciever account is not active so you cannot recieve any amount."]);
+                return response()->json(['success' => 0, 'msg' => "Reciever account is not active so you cannot send any amount."]);
             }
 
             $bankAccount = $user->bank_account;

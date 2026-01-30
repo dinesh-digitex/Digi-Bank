@@ -98,6 +98,11 @@
                                 <td>{{ $transaction->trnsaction_id }}</td>
                                 <td>
                                     {{ format_price($transaction->amount) }}
+                                    @if ($transaction?->transfer_type == 'send')
+                                        <span class="text-danger">(Deduct)</span>
+                                    @elseif($transaction?->transfer_type == 'recieved')
+                                        <span class="text-success">(Credit)</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <span
